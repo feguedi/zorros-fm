@@ -1,5 +1,5 @@
-# zorros-fm
-Administrador de archivos para Zorros Football Academy
+# Zorros file manager
+Administrador de archivos para Zorros Football Academy.
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 

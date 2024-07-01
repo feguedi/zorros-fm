@@ -41,6 +41,11 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-quasar-ui',
   ],
+  quasar: {
+    config: {
+      dark: true,
+    },
+  },
   experimental: {
     viewTransition: true,
   },
