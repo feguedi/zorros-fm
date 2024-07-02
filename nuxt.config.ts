@@ -44,6 +44,19 @@ export default defineNuxtConfig({
   quasar: {
     config: {
       dark: true,
+      brand: {
+        primary: '#dd6a1d',
+        secondary: '#0260f7',
+        accent: '#7b61ff',
+
+        dark: '#1d1d1d',
+        'dark-page': '#101010',
+
+        positive: '#14a38c',
+        negative: '#f61e5f',
+        info: '#31CCEC',
+        warning: '#edb464',
+      },
     },
   },
   experimental: {
