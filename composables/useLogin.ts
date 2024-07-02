@@ -14,8 +14,10 @@ interface LoginResponse {
 }
 
 export function useLogin() {
+  const $q = useQuasar();
   const { $pinia } = useNuxtApp();
   const perfilStore = usePerfilStore($pinia);
+  const router = useRouter();
 
   const usuario = ref<string>('');
   const contrasenia = ref<string>('');
@@ -33,19 +35,30 @@ export function useLogin() {
       body.value.usuario = usuario.value;
       body.value.contrasenia = contrasenia.value;
 
-      console.log('body:', JSON.stringify(body.value, null, 2));
-
-      const res = await $fetch<LoginResponse>(
+      const { token } = await $fetch<LoginResponse>(
         '/api/auth/login',
         {
+          headers: {
+            accept: 'application/json',
+            'content-type': 'application/json',
+          },
           method: 'POST',
-          body,
+          body: JSON.stringify(body.value),
         },
       );
 
-      perfilStore.setToken(res.token);
+      perfilStore.setToken(token);
+      router.replace('/fm');
     } catch (error) {
       console.error('fetchLogin error -', error);
+
+      if ($q.notify) {
+        $q.notify({
+          message: (error as any).message || error,
+          color: 'danger',
+        });
+      }
+
       errorMessage.value = error;
     }
   }
