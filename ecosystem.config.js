@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   apps: [
     {
       name: 'zorros-fm-client',
@@ -8,4 +8,4 @@ export default {
       script: './.output/server/index.mjs',
     },
   ],
-}
+};
