@@ -2,6 +2,7 @@
 import { useLogin } from '@/composables/useLogin';
 
 definePageMeta({
+  middleware: 'auth',
   layout: 'auth',
 });
 
