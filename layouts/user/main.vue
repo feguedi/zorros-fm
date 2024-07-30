@@ -3,12 +3,14 @@
 
 <template>
   <div>
-    <MainLayout>
-      <template #title>Inicio</template>
-
-      <template #default>
-        <slot />
-      </template>
-    </MainLayout>
+    <ClientOnly>
+      <MainLayout>
+        <template #title>Inicio</template>
+  
+        <template #default>
+          <slot />
+        </template>
+      </MainLayout>
+    </ClientOnly>
   </div>
 </template>
