@@ -1,15 +1,16 @@
 version: '3.8'
 services:
-  fm-client:
-    image: node:20-alpine
+  zorros_fm_client:
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: fm-client
+    command: pm2 start ecosystem.config.cjs
     environment:
       - NUXT_API_BASE="http://127.0.0.1:8081"
       - NUXT_API_ENDPOINT="/api"
-    volumes:
-      - ./config:/config
     ports:
-      - 3030:80
+      - 3030:3030
     networks:
       - reverse_proxy
     restart: unless-stopped
