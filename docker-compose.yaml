@@ -8,8 +8,6 @@ services:
       - NUXT_API_ENDPOINT="/api"
     volumes:
       - ./config:/config
-    depends_on:
-      - 'zorros_fm_server'
     ports:
       - 3030:80
     networks:
