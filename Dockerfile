@@ -8,7 +8,7 @@ WORKDIR /app
 # COPY pnpm-lock.yaml package.json ./
 
 # Install app dependencies using PNPM
-RUN npm install -g pnpm
+# RUN npm install -g pnpm
 RUN npm install -g pm2
 
 # Install dependencies
@@ -16,6 +16,8 @@ RUN npm install -g pm2
 
 # Copy the application code 
 COPY ./.output .
+COPY ./.env .
+COPY ./ecosystem.config.cjs .
 
 # Build the TypeScript code
 # RUN pnpm build
