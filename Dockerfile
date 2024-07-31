@@ -5,26 +5,27 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copy package.json and pnpm-lock.yaml
-# COPY pnpm-lock.yaml package.json ./
+COPY pnpm-lock.yaml package.json ./
 
 # Install app dependencies using PNPM
-# RUN npm install -g pnpm
-RUN npm install -g pm2
+RUN npm install -g pnpm
+# RUN npm install -g pm2
 
 # Install dependencies
-# RUN pnpm install
+RUN pnpm install
 
 # Copy the application code 
-# COPY . .
-COPY .output .env ecosystem.config.cjs ./
-COPY .env ./
-COPY ecosystem.config.cjs ./
+COPY . .
+# COPY .output /app/
+# COPY .env /app/
+# COPY ecosystem.config.cjs /app/
 
 # Build the TypeScript code
-# RUN pnpm build
+RUN pnpm build
 
 # Expose the app
 EXPOSE 3030
+EXPOSE 3000
 
 # Start the application
-CMD ["pm2", "start", "ecosystem.config.cjs"]
+CMD ["pnpm", "start"]

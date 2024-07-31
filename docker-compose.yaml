@@ -4,9 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: fm-client
-    command: pm2 start ecosystem.config.cjs
+    command: pnpm start
     ports:
-      - 3030:3030
+      - 3030:3000
     networks:
       - reverse_proxy
     restart: unless-stopped
