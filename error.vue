@@ -14,20 +14,22 @@ useHead({
 
 <template>
   <div>
-    <QLayout>
-      <QPageContainer class="window-width window-height">
-        <QPage class="fit row items-center justify-center content-center">
-          <div class="col-10 col-md-6 col-lg-8">
-            <div class="column q-pa-none q-pa-lg-lg">
-              <h2>{{ error.statusCode }}</h2>
+    <ClientOnly>
+      <QLayout>
+        <QPageContainer class="window-width window-height">
+          <QPage class="fit row items-center justify-center content-center">
+            <div class="col-10 col-md-6 col-lg-8">
+              <div class="column q-pa-none q-pa-lg-lg">
+                <h2>{{ error?.statusCode }}</h2>
 
-              <p>{{ error.message }}</p>
+                <p>{{ error?.message || error }}</p>
 
-              <QBtn color="primary" label="Limpiar errores" @click="handleError" />
+                <QBtn color="primary" label="Limpiar errores" @click="handleError" />
+              </div>
             </div>
-          </div>
-        </QPage>
-      </QPageContainer>
-    </QLayout>
+          </QPage>
+        </QPageContainer>
+      </QLayout>
+    </ClientOnly>
   </div>
 </template>
