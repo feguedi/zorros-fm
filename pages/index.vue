@@ -2,6 +2,10 @@
 useHead({
   title: 'Zorros Football Academy',
 });
+
+definePageMeta({
+  auth: false,
+});
 </script>
 
 <template>

@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 definePageMeta({
+  auth: {
+    unauthenticatedOnly: false,
+    navigateUnauthenticatedTo: '/auth/login',
+  },
   layout: 'user-main',
-  middleware: 'auth',
 });
 
 useHead({

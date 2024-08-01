@@ -4,8 +4,11 @@ import { useRecover } from '~/composables/useRecover';
 const { telefono, fetchRecover, resetValues } = useRecover();
 
 definePageMeta({
-  middleware: 'auth',
   layout: 'auth',
+  auth: {
+    unauthenticatedOnly: true,
+    navigateAuthenticatedTo: '/fm',
+  },
 });
 
 useHead({

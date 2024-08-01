@@ -1,18 +1,23 @@
 <script lang="ts" setup>
-type team = 'lions' | 'sharks' | 'aguilasdoradas' | 'bufalos' | 'cachorros' | 'diablos' | 'jaguares';
+type team = 'lions' | 'sharks' | 'aguilasdoradas' | 'bufalos' | 'cachorros' | 'diablos' | 'jaguares' | 'vikingos' | 'rojos';
 const equipos = ref<team[]>([
   'lions',
   'sharks',
   'aguilasdoradas',
   'bufalos',
   'cachorros',
+  'rojos',
   'diablos',
   'jaguares',
+  'vikingos',
 ]);
 
 definePageMeta({
+  auth: {
+    unauthenticatedOnly: false,
+    navigateUnauthenticatedTo: '/auth/login',
+  },
   layout: 'user-main',
-  middleware: 'auth',
 });
 
 useHead({

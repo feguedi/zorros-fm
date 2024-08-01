@@ -2,8 +2,11 @@
 import { useLogin } from '@/composables/useLogin';
 
 definePageMeta({
-  middleware: 'auth',
   layout: 'auth',
+  auth: {
+    unauthenticatedOnly: true,
+    navigateAuthenticatedTo: '/fm',
+  },
 });
 
 useHead({
