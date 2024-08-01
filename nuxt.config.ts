@@ -38,6 +38,7 @@ export default defineNuxtConfig({
   },
   modules: [
     ['@pinia/nuxt', { autoImports: ['defineStore', 'acceptHMRUpdate'] }],
+    '@sidebase/nuxt-auth',
     '@vueuse/nuxt',
     'nuxt-quasar-ui',
   ],
@@ -56,6 +57,34 @@ export default defineNuxtConfig({
         negative: '#f61e5f',
         info: '#31CCEC',
         warning: '#edb464',
+      },
+    },
+  },
+  auth: {
+    baseURL: '/api/auth',
+    globalAppMiddleware: true,
+    provider: {
+      type: 'local',
+      endpoints: {
+        signIn: { path: '/login', method: 'post' },
+        signOut: { path: '/logout', method: 'post' },
+        getSession: { path: '/session', method: 'get' },
+      },
+      pages: {
+        login: '/auth/login',
+      },
+      token: {
+        signInResponseTokenPointer: '/token',
+      },
+      session: {
+        dataType: {
+          id: 'string',
+          nombre: 'string | undefined',
+          nickname: 'string | undefined',
+          imagen: 'string | undefined',
+          rol: "('ADMINISTRADOR' | 'COACH' | 'JUGADOR')[] | undefined",
+          telefono: 'number | undefined',
+        },
       },
     },
   },
