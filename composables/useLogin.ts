@@ -15,9 +15,9 @@ interface LoginResponse {
 
 export function useLogin() {
   const $q = useQuasar();
+  const { signIn } = useAuth();
   const { $pinia } = useNuxtApp();
   const perfilStore = usePerfilStore($pinia);
-  const router = useRouter();
 
   const usuario = ref<string>('');
   const contrasenia = ref<string>('');
@@ -46,9 +46,10 @@ export function useLogin() {
           body: JSON.stringify(body.value),
         },
       );
+      const res = await signIn(body.value, { callback: '/fm' });
+      console.log('Respuesta:', res);
 
       perfilStore.setToken(token);
-      router.replace('/fm');
     } catch (error) {
       console.error('fetchLogin error -', error);
 

@@ -1,4 +1,4 @@
-export async function useRecover() {
+export function useRecover() {
   const $q = useQuasar();
   const telefono = ref<string>('');
 
