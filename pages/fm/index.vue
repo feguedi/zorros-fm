@@ -1,5 +1,9 @@
 <script lang="ts" setup>
+const { fetchListas } = useListas();
+const errorMessage = ref<string | null>(null);
+
 type team = 'lions' | 'sharks' | 'aguilasdoradas' | 'bufalos' | 'cachorros' | 'diablos' | 'jaguares' | 'vikingos' | 'rojos';
+
 const equipos = ref<team[]>([
   'lions',
   'sharks',
@@ -12,6 +16,10 @@ const equipos = ref<team[]>([
   'vikingos',
 ]);
 
+useHead({
+  title: 'Dashboard | Zorros Football Academy',
+});
+
 definePageMeta({
   auth: {
     unauthenticatedOnly: false,
@@ -20,8 +28,13 @@ definePageMeta({
   layout: 'user-main',
 });
 
-useHead({
-  title: 'Zorros Football Academy',
+onMounted(async () => {
+  try {
+    await fetchListas();
+  } catch (err: any) {
+    errorMessage.value = err.message || String(err);
+    throw new Error('Error fm:', err);
+  }
 });
 </script>
 
@@ -35,5 +48,9 @@ useHead({
       </div>
     </template>
     -->
+
+    <h2 v-if="errorMessage">
+      {{ errorMessage }}
+    </h2>
   </div>
 </template>
