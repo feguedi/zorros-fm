@@ -45,11 +45,11 @@ export function useLogin() {
           method: 'POST',
           body: JSON.stringify(body.value),
         },
-      );
-      const res = await signIn(body.value, { callback: '/fm' });
-      console.log('Respuesta:', res);
-
+      );      
       perfilStore.setToken(token);
+
+      const res = await signIn(body.value, { callbackUrl: '/fm', external: true });
+      console.log('Respuesta:', res);
     } catch (error) {
       console.error('fetchLogin error -', error);
 
