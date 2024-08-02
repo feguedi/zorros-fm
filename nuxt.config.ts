@@ -75,6 +75,10 @@ export default defineNuxtConfig({
       },
       token: {
         signInResponseTokenPointer: '/token',
+        type: 'Bearer',
+        cookieName: 'auth.token',
+        headerName: 'Authorization',
+        cookieDomain: 'app.zorros.football',
       },
       session: {
         dataType: {
