@@ -10,6 +10,14 @@
         <template #default>
           <slot />
         </template>
+
+        <template #leftDrawer>
+          <p>Drawer</p>
+        </template>
+
+        <template #menus>
+          <MenuUser />
+        </template>
       </MainLayout>
     </ClientOnly>
   </div>
