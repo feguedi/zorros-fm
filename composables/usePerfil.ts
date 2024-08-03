@@ -26,19 +26,19 @@ export function usePerfil() {
 
       const { data, error: fetchError, status: fetchStatus, execute } = useAsyncData<Perfil>(
         'perfil',
-        () => $fetch('/api/profile', { headers: { Authorization: `Bearer ${tokenRef.value}` } }),
+        () => $fetch('/api/profile', { headers: { Authorization: `Bearer ${perfilStore.token}` } }),
         { immediate: false },
       );
 
       await later(2000, null);
       await execute();
 
-      if (fetchStatus.value === 'error' || !!fetchError.value) {
-        throw fetchError.value;
+      if (data.value && data.value.id) {
+        perfilStore.setDatos(data.value);
       }
 
-      if (data.value) {
-        perfilStore.setDatos(data.value);
+      if (fetchStatus.value === 'error' || !!fetchError.value) {
+        throw fetchError.value;
       }
     } catch (err) {
       throw new FetchError(err as any);

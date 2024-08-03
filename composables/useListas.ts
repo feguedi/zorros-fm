@@ -23,7 +23,11 @@ export function useListas() {
   async function fetchListas() {
     try {
       if (!perfilStore.token) {
-        throw new Error('No existe token de sesión');
+        if (localStorage.getItem('zorrosFMSession')) {
+          perfilStore.setToken(localStorage.getItem('zorrosFMSession') ?? undefined);
+        } else {
+          throw new Error('No existe token de sesión');
+        }
       }
 
       await execute();

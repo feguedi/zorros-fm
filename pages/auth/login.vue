@@ -20,10 +20,9 @@ const { usuario, contrasenia, fetchLogin, resetValues } = useLogin();
   <div class="q-gutter-xl col-12 col-sm-9 col-md-6">
     <div class="q-mb-lg column">
       <QImg
-        class="self-center"
+        class="self-center fit"
         src="/img/academia-zorros-logo_bco.svg"
         loading="lazy"
-        width="400px"
         spinner-color="white"
       />
     </div>
