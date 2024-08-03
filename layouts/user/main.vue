@@ -1,11 +1,14 @@
 <script lang="ts" setup>
+const treeData = 2;
 </script>
 
 <template>
   <div>
     <ClientOnly>
       <MainLayout>
-        <template #title>Inicio</template>
+        <template #title>
+          <slot name="title" />
+        </template>
   
         <template #default>
           <slot />
