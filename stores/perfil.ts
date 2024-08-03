@@ -17,6 +17,10 @@ export const usePerfilStore = defineStore('perfil', () => {
     }
   }
 
+  function setDatos(p: Perfil) {
+    datosRef.value = p;
+  }
+
   function clearSession() {
     tokenActual.value = null;
     datosRef.value = null;
@@ -31,5 +35,6 @@ export const usePerfilStore = defineStore('perfil', () => {
     setToken,
     clearSession,
     datos,
+    setDatos,
   };
 });

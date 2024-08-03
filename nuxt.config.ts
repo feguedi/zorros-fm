@@ -59,6 +59,7 @@ export default defineNuxtConfig({
         warning: '#edb464',
       },
     },
+    cssAddon: true,
   },
   auth: {
     baseURL: '/api/auth',
